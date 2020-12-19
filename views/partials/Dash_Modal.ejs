@@ -1,0 +1,129 @@
+<!-- Delete-Modal  -->
+<form action="/user/delete-data" method="POST">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are You Sure You Want To Delete This Item?
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Please Enter This Cutomer ID: <b
+                  id="cusId"></b></label>
+              <input type="text" class="form-control" name="item_id" placeholder="Item ID" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- detail Modal  -->
+
+<!-- Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Customer Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row cutomarDetail">
+            <div class="col-md-2 col-sm-12 div1"><i class="fas fa-user-circle" style="font-size: 100px;"></i></div>
+            <div class="col-md-4 div2 col-sm-12 ">
+              <h4 class="detail">John</h4>
+              <sub>
+                <p class="detail">Email@gmail.com</p>
+                <p class="detail">+919616389301</p>
+              </sub>
+            </div>
+            <div class="col-md-6 div3">
+              <b>Subject: </b><label class="detail"></label></label><br>
+              <b>Massage:</b><p class="detail"></p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="container sendEmail">
+                <form action="send-mail" method="POST">
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">To</label>
+                    <input type="text" class="form-control detail" name="EmailTo" value="shaad@gmail.com"
+                      id="recipient-name" readonly="readonly">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Message</label>
+                    <textarea rows="4" class="form-control" name="massage" id="message-text" required></textarea>
+                  </div>
+
+                  <button type="submit" class="btn p-2 btn-outline-danger btn-sm fas fa-share">Reply</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Success Modal -->
+<% if(success_msg != ''){ %>
+<input type="checkbox" name="boxCheck" id="closeCheck">
+<div class="modal fade bd-example-modal-sm show text-center" tabindex="-1" aria-labelledby="mySmallModalLabel"
+  style="display: block;" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content modalMassage">
+      <div class="modal-body">
+        <p style="color: green;">
+          <i class="fa fa-check" aria-hidden="true" style="padding: 11px;border: 1px solid;border-radius: 50%;"></i>
+          <%= success_msg %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <label for="closeCheck">Close</label>
+      </div>
+    </div>
+  </div>
+</div>
+<%}%>
+
+<!--Error Modal -->
+<% if(error != ''){ %>
+  <input type="checkbox" name="boxCheck" id="closeCheck">
+  <div class="modal fade bd-example-modal-sm show text-center" tabindex="-1" aria-labelledby="mySmallModalLabel"
+    style="display: block;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content modalMassage">
+        <div class="modal-body">
+          <p style="color: rgb(236, 84, 24);">
+            <i class="fa fa-times" aria-hidden="true" style="padding: 11px;border: 1px solid;border-radius: 50%;"></i>
+            <%= error %>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <label for="closeCheck">Close</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%}%>

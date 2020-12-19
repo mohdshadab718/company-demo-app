@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="icon" href="/image/dashIcon.png">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+  <!-- --Fontawsome-- -->
+  <link href="/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- --Custom Css-- -->
+  <link rel="stylesheet" href="/stylesheet/dash.css">
+  <title>Dashboard</title>
+
+  <!----Google Font--  -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300"
+      rel="stylesheet">
+
+   <!-- animate css  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+</head>
+
+<body>
+  <div>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="/user/dashboard">Welcome <%= UserName %></a>
+        <label for="bar" id="barIcon"><i class="fas fa-bars"></i></button></label>
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
+            aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user fa-fw"></i></a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">Settings</a>
+            <!-- <a class="dropdown-item" href="#">Activity Log</a> -->
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/user/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- --Main-- -->
+  <div class="wrapper">
+    <input type="checkbox" id="bar">
+    <div class="sidebar">
+      <div class="sidebarItem">
+        <ul>
+          <label>Core</label>
+          <a href="/user/dashboard">
+            <li class="item"><i class="fas fa-tachometer-alt"></i>Dashboard</li>
+          </a>
+
+          <label>Interface</label>
+          <a href="#">
+            <li class="item"><i class="fa fa-table" aria-hidden="true"></i>Table</li>
+          </a>
+          <a href="#">
+            <li class="item"><i class="fa fa-users" aria-hidden="true"></i>User Setting</li>
+          </a>
+        </ul>
+        <div class="logoutbtn text-center">
+          <button type="button" class="btn btn-dark btn-sm"><i class="fas fa-sign-out-alt"></i><a id="btnlogout"
+              href="/user/logout">Logout</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+       <!-- Modal -->
+      
+       <%- include('partials/Dash_Modal') -%>
+  
+      <!-- -----------End Modal---------------- -->
+      <div class="content container">
+        <h1 class="animate__animated animate__fadeIn"><i class="fas fa-tachometer-alt"></i>Dashboard</h1>      
+        <div class="card mb-4">
+          <div class="card-header animate__animated animate__fadeIn">
+            <i class="fas fa-table mr-1"></i>Contact Table
+          </div>
+          <div class="card-body">
+            <div class="table-responsive animate__animated animate__fadeIn">
+              <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">_id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(data => { %>
+                      <tr class="animate__animated animate__slideInUp animate__slow">
+                        <th scope="row" class="cutomarId" data-toggle="modal" data-target="#detailModal"><%= data._id %></th>
+                        <td><%= data.name %></td>
+                        <td><%= data.email %></td>
+                        <td><%= data.phone %></td>
+                        <td>
+                            <a href="#" class="fas fa-edit fa-sm fa-fw mr-2"></a>
+                            <!-- Button trigger modal -->
+                            <a href="deleteItem" class="fas fa-trash fa-sm fa-fw mr-2 delModalBtn" data-toggle="modal"
+                              data-target="#exampleModalCenter"></a>
+                        </td>
+                      </tr>
+                      <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --Custom JavaScript-- -->
+  <script src="/javascript/dash.js" defer></script>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
