@@ -3,7 +3,8 @@
 .login {
     display: block;
     height: 100vh;
-    background: url(/image/loginbg.jpg);
+    background: linear-gradient(105deg, black 25%, yellow 25%);
+/*     background: url(/image/loginbg.jpg); */
     background-size: cover;
     background-attachment: fixed;
 }
