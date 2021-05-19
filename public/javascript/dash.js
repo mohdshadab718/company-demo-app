@@ -16,6 +16,8 @@ for (const ele of del_btn) {
 let cutomarId = document.getElementsByClassName('cutomarId');
 for (const ele of cutomarId) {
     ele.addEventListener('click',()=>{
+        let loader = document.getElementsByClassName("dash-loader")[0];
+        loader.style.filter = "blur(4px)"
         // console.log(ele.innerText);
         let _id = ele.innerText;
         fetch('/user/fill-customer-data/?id='+_id)
@@ -29,6 +31,9 @@ for (const ele of cutomarId) {
                 customerDetail[3].innerText = data.subject;
                 customerDetail[4].innerText = data.massage;
                 customerDetail[5].value = data.email;
+            
+                    loader.style.filter = "none"
+
             })
     })
 }
