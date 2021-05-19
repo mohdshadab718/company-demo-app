@@ -17,7 +17,7 @@ let cutomarId = document.getElementsByClassName('cutomarId');
 for (const ele of cutomarId) {
     ele.addEventListener('click',()=>{
         let loader = document.getElementsByClassName("dash-loader")[0];
-        loader.style.filter = "blur(4px)"
+        loader.style.filter = "blur(6px)"
         // console.log(ele.innerText);
         let _id = ele.innerText;
         fetch('/user/fill-customer-data/?id='+_id)
