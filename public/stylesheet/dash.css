@@ -90,7 +90,10 @@ ul li{
     font-size: 60px;
     padding-right: 15px;
 }
-
+.scroll-card{
+    max-height: 491px !important;
+    overflow: scroll;
+}
 
 /* ###################### */
 
